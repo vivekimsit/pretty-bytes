@@ -1,18 +1,21 @@
 import math
 import strutils
+import strformat
 
 var
   units: array[0..4, string]
 
-units = ["TB", "GB", "MB", "KB", "B"]
+units = ["B", "KB", "MB", "GB", "TB"]
+
 proc prettybytes*(number: var float): string =
+  var suffix = ""
+  var prefix = ""
   if (number < 0):
     number = -number
+    prefix = "-"
 
-  var suffix = units[4]
-  if number >= 1000:
-    let exponent = int(log10(number))
-    number = int(number) / (10^exponent)
-    suffix = units[exponent]
+  let exponent = int(log10(number) / 3) # don't consider number less than n * 1000
+  number = number / float(1000 ^ exponent)
 
-  return "$1$2" % [intToStr(int(number)), suffix]
+  suffix = units[exponent]
+  return fmt"{prefix}{number} {suffix}"
