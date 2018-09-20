@@ -1,21 +1,17 @@
-import math
-import strutils
-import strformat
+import math, strformat
 
-var
-  units: array[0..4, string]
+const units = ["B", "KB", "MB", "GB", "TB"]
 
-units = ["B", "KB", "MB", "GB", "TB"]
-
-proc prettybytes*(number: var float): string =
-  var suffix = ""
-  var prefix = ""
+proc prettybytes*(number: SomeNumber): string {.noSideEffect.} =
+  var
+    num = number.float
+    suffix = ""
+    prefix = ""
   if (number < 0):
-    number = -number
+    num = -number
     prefix = "-"
 
-  let exponent = int(log10(number) / 3) # don't consider number less than n * 1000
-  number = number / float(1000 ^ exponent)
-
+  let exponent = int(log10(num) / 3.0) # don't consider number less than n * 1000
+  num = num / float(1000 ^ exponent)
   suffix = units[exponent]
-  return fmt"{prefix}{number} {suffix}"
+  return fmt"{prefix}{num:g} {suffix}"
