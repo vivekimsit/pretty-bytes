@@ -1,1 +1,8 @@
-nimcache/
+nimcache
+
+# compiled binaries
+main
+prettybytes
+
+test
+unit
