@@ -5,6 +5,8 @@ author        = "Vivek Poddar"
 description   = "Convert bytes to human readable string"
 license       = "MIT"
 
+srcDir = "src"
+
 # Dependencies
 
 requires "nim >= 0.10.0"

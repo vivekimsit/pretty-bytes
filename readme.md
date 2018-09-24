@@ -57,4 +57,4 @@ Default: `false` *(No localization)*
 
 ## License
 
-MIT © [Vive Poddar](https://vivekpoddar.com)
+MIT © [Vivek Poddar](https://vivekpoddar.com)
