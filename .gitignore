@@ -1,8 +1,5 @@
+/tests/*
+!/tests/*.nim
+!/tests/*/
+
 nimcache
-
-# compiled binaries
-main
-prettybytes
-
-test
-unit
